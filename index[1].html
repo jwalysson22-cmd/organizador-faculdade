@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173B73">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Faculdade">
+  
+  
+  <style>
+*{box-sizing:border-box} :root{--blue:#173B73;--blue2:#24579B;--ink:#172033;--muted:#6D7685;--bg:#F4F6FA;--card:#fff;--line:#E4E8EF;--green:#217A55;--yellow:#A36A00;--red:#B43B3B}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif}
+body{padding-bottom:92px}.topbar{background:linear-gradient(135deg,#173B73,#24579B);color:#fff;padding:calc(18px + env(safe-area-inset-top)) 20px 22px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:5}.topbar h1{margin:3px 0 0;font-size:22px}.eyebrow{font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.78;font-weight:700}.icon-btn{border:0;background:rgba(255,255,255,.14);color:inherit;width:38px;height:38px;border-radius:12px;font-size:16px}
+main{max-width:760px;margin:0 auto;padding:18px}.screen{display:none}.screen.active{display:block}.card,.stack>*{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 5px 20px rgba(23,32,51,.04)}
+.hero{padding:20px;background:linear-gradient(135deg,#fff,#edf3fb)}.hero h2{font-size:25px;margin:12px 0 5px}.hero p{margin:0;color:var(--muted)}.pill{display:inline-flex;background:#E4ECF8;color:var(--blue);padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700}
+.section-head{display:flex;align-items:center;justify-content:space-between;margin:25px 2px 10px}.section-head h3{margin:0;font-size:17px}.text-btn{border:0;background:none;color:var(--blue2);font-weight:700}
+.stack{display:grid;gap:10px}.item{padding:15px}.item-row{display:flex;justify-content:space-between;gap:12px}.item h4{margin:0 0 5px;font-size:15px}.item p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}.tag{font-size:11px;padding:5px 8px;border-radius:8px;background:#EEF2F7;color:#475569;font-weight:700;white-space:nowrap}.tag.blue{background:#E7EFFB;color:var(--blue)}.tag.green{background:#E6F4ED;color:var(--green)}.tag.yellow{background:#FFF3DB;color:var(--yellow)}
+.screen-title{display:flex;justify-content:space-between;align-items:center;margin:4px 0 18px}.screen-title h2{margin:4px 0 0;font-size:26px}
+.subject-grid{display:grid;gap:12px}.subject{padding:17px;background:var(--card);border:1px solid var(--line);border-radius:18px}.subject h3{margin:0 0 6px;font-size:17px}.subject .meta{color:var(--muted);font-size:12px;margin-bottom:13px}.subject-actions{display:flex;gap:8px;flex-wrap:wrap}.secondary-btn,.primary-btn,.filter{border:1px solid var(--line);border-radius:11px;padding:9px 12px;background:#fff;color:var(--ink);font-weight:700}.primary-btn{background:var(--blue);color:#fff;border-color:var(--blue)}.primary-btn.small{padding:8px 11px}.secondary-btn{min-width:42px}
+.calendar-controls{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.week-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}.day{min-height:125px;background:#fff;border:1px solid var(--line);border-radius:13px;padding:7px}.day.today{border:2px solid var(--blue)}.day-name{font-size:10px;text-transform:uppercase;color:var(--muted);font-weight:800}.day-num{font-size:18px;font-weight:800;margin:2px 0 8px}.class-dot{font-size:9px;line-height:1.25;padding:4px 4px;background:#EAF0F9;color:var(--blue);border-radius:6px;margin-bottom:4px}.class-dot.warn{background:#FFF3DB;color:var(--yellow)}
+.filters{display:flex;gap:7px;margin-bottom:14px}.filter.active{background:var(--blue);border-color:var(--blue);color:#fff}.check{width:22px;height:22px;border-radius:7px;border:2px solid #C8CFDA;background:#fff;flex:none}.check.done{background:var(--green);border-color:var(--green);color:#fff}.task{display:flex;gap:11px;align-items:flex-start}.task-main{flex:1}.task-main strong{display:block;font-size:14px}.task-main span{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+.progress{height:9px;background:#E9EDF3;border-radius:99px;overflow:hidden;margin-top:9px}.progress>i{display:block;height:100%;background:var(--blue);border-radius:99px}.stat{display:flex;justify-content:space-between;font-size:13px}.empty{padding:20px;text-align:center;color:var(--muted);background:#fff;border:1px dashed #CBD3DF;border-radius:16px;font-size:13px}
+.bottom-nav{position:fixed;z-index:10;left:0;right:0;bottom:0;background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);padding:7px 7px calc(7px + env(safe-area-inset-bottom));box-shadow:0 -5px 20px rgba(0,0,0,.05)}.nav-item{border:0;background:none;color:#7B8492;padding:5px 2px;border-radius:12px}.nav-item span{display:block;font-size:20px;line-height:20px}.nav-item small{font-size:10px;font-weight:700}.nav-item.active{color:var(--blue);background:#EEF3FA}
+.modal{position:fixed;inset:0;background:rgba(10,18,30,.46);z-index:20;display:flex;align-items:flex-end}.modal.hidden{display:none}.modal-card{width:100%;max-width:760px;margin:auto 0 0;background:#fff;border-radius:24px 24px 0 0;max-height:88vh;overflow:auto;padding:20px}.modal-head{display:flex;justify-content:space-between;align-items:center}.modal-head h3{margin:0;font-size:20px}.modal .icon-btn{background:#EEF2F7;color:#25324A}.modal h4{margin:18px 0 7px}.modal ul{padding-left:20px;line-height:1.6;color:#445066}.modal li{margin:5px 0}.preview-box{background:#F5F8FC;border:1px solid #E1E8F2;border-radius:14px;padding:13px;margin-top:12px}.toast{position:fixed;z-index:30;left:18px;right:18px;bottom:100px;background:#182236;color:#fff;padding:12px 15px;border-radius:12px;text-align:center;font-size:13px}.toast.hidden{display:none}
+@media(max-width:430px){main{padding:15px}.week-grid{gap:3px}.day{min-height:112px;padding:5px}.day-num{font-size:16px}.class-dot{font-size:8px}.topbar{padding-left:16px;padding-right:16px}}
+
+
+.notes-v2-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px}
+.notes-v2-card h3{margin:0 0 6px;font-size:16px}.notes-v2-meta{font-size:12px;color:var(--muted);margin-bottom:10px}
+.notes-v2-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.notes-v2-grid label{font-size:11px;font-weight:800;color:#4A5568}.notes-v2-grid input{width:100%;margin-top:4px;padding:9px;border:1px solid #CBD3DF;border-radius:9px;font:inherit}
+.notes-v2-actions{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap}.v2-score{font-size:25px;font-weight:900}
+
+</style>
+  <title>Faculdade • Walysson</title>
+<style>
+
+/* ===== CORES DAS DISCIPLINAS ===== */
+.subject-card.contabilidade-social { --subject-color: #2563EB; }
+.subject-card.calculo-ii { --subject-color: #7C3AED; }
+.subject-card.microeconomia-i { --subject-color: #16A34A; }
+.subject-card.economia-de-empresas { --subject-color: #EA580C; }
+.subject-card.metodologia-cientifica { --subject-color: #EAB308; }
+
+.subject-card.contabilidade-social,
+.subject-card.calculo-ii,
+.subject-card.microeconomia-i,
+.subject-card.economia-de-empresas,
+.subject-card.metodologia-cientifica {
+    border-top-color: var(--subject-color) !important;
+}
+
+.subject-card.contabilidade-social h3,
+.subject-card.calculo-ii h3,
+.subject-card.microeconomia-i h3,
+.subject-card.economia-de-empresas h3,
+.subject-card.metodologia-cientifica h3 {
+    color: var(--subject-color) !important;
+}
+
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <div class="eyebrow">UFRPE • Ciências Econômicas</div>
+      <h1>Minha Faculdade</h1>
+    </div>
+    <button class="icon-btn" id="settingsBtn" aria-label="Configurações">⚙️</button>
+  </header>
+
+  <main id="app">
+    <section class="screen active" id="homeScreen">
+      <div class="hero card">
+        <div>
+          <span class="pill">3º período • 2026.2</span>
+          <h2 id="greeting">Olá, Walysson.</h2>
+          <p id="todayText"></p>
+        </div>
+      </div>
+
+      <div class="section-head">
+        <h3>Hoje</h3><button class="text-btn" data-screen="calendarScreen">Ver calendário</button>
+      </div>
+      <div id="todayClasses" class="stack"></div>
+
+      <div class="section-head">
+        <h3>O que estudar</h3><button class="text-btn" data-screen="subjectsScreen">Ver matérias</button>
+      </div>
+      <div id="studyToday" class="stack"></div>
+
+      <div class="section-head">
+        <h3>Próximos prazos</h3>
+      </div>
+      <div id="deadlines" class="stack"></div>
+    </section>
+
+    <section class="screen" id="subjectsScreen">
+      <div class="screen-title">
+        <div><span class="eyebrow">Seu semestre</span><h2>Disciplinas</h2></div>
+      </div>
+      <div id="subjects" class="subject-grid"></div>
+    </section>
+
+    <section class="screen" id="calendarScreen">
+      <div class="screen-title">
+        <div><span class="eyebrow">10/08 → 12/12</span><h2>Calendário</h2></div>
+      </div>
+      <div class="calendar-controls">
+        <button class="secondary-btn" id="prevWeek">‹</button>
+        <strong id="weekLabel"></strong>
+        <button class="secondary-btn" id="nextWeek">›</button>
+      </div>
+      <div id="weekCalendar" class="week-grid"></div>
+    </section>
+
+    <section class="screen" id="tasksScreen">
+      <div class="screen-title">
+        <div><span class="eyebrow">Organização</span><h2>Tarefas</h2></div>
+        <button class="primary-btn small" id="addTaskBtn">+ Tarefa</button>
+      </div>
+      <div class="filters">
+        <button class="filter active" data-filter="all">Todas</button>
+        <button class="filter" data-filter="open">Pendentes</button>
+        <button class="filter" data-filter="done">Concluídas</button>
+      </div>
+      <div id="taskList" class="stack"></div>
+    </section>
+
+    <section class="screen" id="progressScreen">
+      <div class="screen-title"><div><span class="eyebrow">Acompanhamento</span><h2>Progresso</h2></div></div>
+      <div id="progressCards" class="stack"></div>
+    </section>
+  
+<section class="screen" id="notesScreen">
+  <div class="screen-title">
+    <div><span class="eyebrow">Versão 2</span><h2>Notas e faltas</h2></div>
+  </div>
+  <div id="notesV2" class="stack"></div>
+</section>
+</main>
+
+  <nav class="bottom-nav">
+    <button class="nav-item active" data-screen="homeScreen"><span>⌂</span><small>Início</small></button>
+    <button class="nav-item" data-screen="subjectsScreen"><span>▦</span><small>Matérias</small></button>
+    <button class="nav-item" data-screen="calendarScreen"><span>□</span><small>Calendário</small></button>
+    <button class="nav-item" data-screen="tasksScreen"><span>✓</span><small>Tarefas</small></button>
+    <button class="nav-item" data-screen="progressScreen"><span>◔</span><small>Progresso</small></button>
+<button class="nav-item" data-screen="notesScreen"><span>★</span><small>Notas</small></button>
+  </nav>
+
+  <div class="modal hidden" id="modal">
+    <div class="modal-card">
+      <div class="modal-head"><h3 id="modalTitle">Prévia de estudo</h3><button class="icon-btn" id="closeModal">✕</button></div>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <div class="toast hidden contabilidade-social microeconomia-i economia-de-empresas metodologia-cientifica" id="toast"></div>
+  <script>
+const subjects = [
+ {id:"micro",name:"Microeconomia I",short:"Micro I",schedule:[["Terça","3N34"],["Quinta","5N12"]],status:"Conteúdo ainda não disponibilizado",preview:"Quando o professor liberar o plano de ensino, esta área receberá a prévia de cada conteúdo antes do estudo."},
+ {id:"cont",name:"Contabilidade Social",short:"Contab. Social",schedule:[["Segunda","2N12"],["Quinta","5N34"]],status:"16 semanas cadastradas"},
+ {id:"emp",name:"Economia de Empresas",short:"Econ. Empresas",schedule:[["Quarta","4N34"],["Sexta","6N12"]],status:"Conteúdo ainda não disponibilizado",preview:"Quando o professor liberar o plano de ensino, esta área receberá a prévia de cada conteúdo antes do estudo."},
+ {id:"calc",name:"Cálculo NII",short:"Cálculo NII",schedule:[["Segunda","2N34"],["Quarta","4N12"]],status:"Conteúdo ainda não disponibilizado",preview:"Quando o professor liberar o plano de ensino, esta área receberá a prévia de cada conteúdo antes do estudo."},
+ {id:"met",name:"Metodologia Científica em Economia",short:"Metodologia",schedule:[["Terça","3N12"],["Sexta","6N34"]],status:"Conteúdo ainda não disponibilizado",preview:"Quando o professor liberar o plano de ensino, esta área receberá a prévia de cada conteúdo antes do estudo."}
+];
+
+const contWeeks = [
+ ["Semana 1","10/08/2026 - 13/08/2026",["Conceitos vinculados à Contabilidade Social.","Introdução ao conceito de PIB (Produto Interno Bruto)"]],
+ ["Semana 2","17/08/2026 - 20/08/2026",["Produto Nacional Bruto (PNB).","PIB a preços de mercado e custo de fatores.","Produto Interno Líquido (PIL).","Renda Nacional Disponível.","Renda Líquida do Governo.","Exercícios."]],
+ ["Semana 3","24/08/2026 - 27/08/2026",["Contas Econômicas Ambientais.","Comparações internacionais do PIB (PPP).","Análise de dados nacionais e internacionais.","Consulta a bases de dados internacionais e variáveis macroeconômicas."]],
+ ["Semana 4","31/08/2026 - 03/09/2026",["Índice Big Mac.","Exercícios."]],
+ ["Semana 5","10/09/2026 - 14/09/2026",["Sistema de Contas Nacionais / IBGE.","Contas Econômicas Integradas (CEIs) e Tabelas de Recursos e Usos (TRUs)."]],
+ ["Semana 6","14/09/2026 - 17/09/2026",["Informações das CEIs e TRUs do Brasil."]],
+ ["Semana 7","21/09/2026 - 24/09/2026",["Continuação CEIs e TRUs."]],
+ ["Semana 8","28/09/2026 - 01/10/2026",["Revisão para a 1ª VA e avaliação."]],
+ ["Semana 9","05/10/2026 - 08/10/2026",["Correção da 1ª VA em sala de aula.","Revisão de álgebra linear."]],
+ ["Semana 10","15/10/2026 - 19/10/2026",["Modelo Insumo-Produto (MIP).","Análise de impactos."]],
+ ["Semana 11","22/10/2026 - 26/10/2026",["Números-índice.","Índices de inflação no Brasil.","Correção monetária."]],
+ ["Semana 12","29/10/2026 - 05/11/2026",["Introdução ao Balanço de Pagamentos do Brasil."]],
+ ["Semana 13","09/11/2026 - 12/11/2026",["Análise do orçamento público.","Indicadores da dívida pública."]],
+ ["Semana 14","16/11/2026 - 23/11/2026",["Análise do mercado de trabalho brasileiro.","Contabilidade do emprego e desemprego."]],
+ ["Semana 15","26/11/2026 - 30/11/2026",["Revisão geral / exercícios."]],
+ ["Semana 16","30/11/2026",["Revisão para 2ª VA e avaliação.","Resolução da VA em sala."]]
+];
+
+let tasks = JSON.parse(localStorage.getItem("fac_tasks")||"[]");
+let currentWeekOffset = 0, taskFilter = "all";
+
+const dayMap = {0:"Domingo",1:"Segunda",2:"Terça",3:"Quarta",4:"Quinta",5:"Sexta",6:"Sábado"};
+const iso = d => d.toISOString().slice(0,10);
+const br = d => d.toLocaleDateString("pt-BR",{day:"2-digit",month:"2-digit"});
+const today = new Date();
+
+function save(){localStorage.setItem("fac_tasks",JSON.stringify(tasks));}
+function showScreen(id){
+ document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("active",s.id===id));
+ document.querySelectorAll(".nav-item").forEach(b=>b.classList.toggle("active",b.dataset.screen===id));
+ window.scrollTo({top:0,behavior:"smooth"});
+ if(id==="homeScreen") renderHome(); if(id==="subjectsScreen") renderSubjects(); if(id==="calendarScreen") renderCalendar(); if(id==="tasksScreen") renderTasks(); if(id==="progressScreen") renderProgress();
+}
+document.querySelectorAll("[data-screen]").forEach(b=>b.addEventListener("click",()=>showScreen(b.dataset.screen)));
+
+function getDayClasses(dayName){
+ return subjects.filter(s=>s.schedule.some(x=>x[0]===dayName));
+}
+function renderHome(){
+ document.getElementById("todayText").textContent=today.toLocaleDateString("pt-BR",{weekday:"long",day:"numeric",month:"long"});
+ const name=dayMap[today.getDay()];
+ const classes=getDayClasses(name);
+ document.getElementById("todayClasses").innerHTML=classes.length?classes.map(s=>`<div class="item"><div class="item-row"><div><h4>${s.name}</h4><p>${s.schedule.filter(x=>x[0]===name).map(x=>x[1]).join(" • ")} • CEGOE</p></div><span class="tag blue">Aula</span></div></div>`).join(""):`<div class="empty">Sem aulas cadastradas para hoje.</div>`;
+ const week=contWeeks.find(w=>dateInRange(today,w[1]));
+ const study=document.getElementById("studyToday");
+ if(week){
+   study.innerHTML=`<div class="item"><div class="item-row contabilidade-social"><div><h4>${week[0]} • Contabilidade Social</h4><p>${week[2].slice(0,2).join(" ")}</p></div><span class="tag green">Prévia</span></div><button class="primary-btn small" style="margin-top:11px" onclick="openPreview(${contWeeks.indexOf(week)})">Ver prévia antes de estudar</button></div>`;
+ } else study.innerHTML=`<div class="empty contabilidade-social">Nenhum conteúdo de Contabilidade Social associado à data de hoje.</div>`;
+ const upcoming=tasks.filter(t=>!t.done).sort((a,b)=>a.date.localeCompare(b.date)).slice(0,3);
+ document.getElementById("deadlines").innerHTML=upcoming.length?upcoming.map(taskHTML).join(""):`<div class="empty">Nenhuma tarefa cadastrada. Você pode adicionar trabalhos e provas na aba Tarefas.</div>`;
+}
+function dateInRange(d,range){
+ const [a,b]=range.split(" - ").map(x=>{const [dd,mm,yy]=x.split("/").map(Number);return new Date(yy,mm-1,dd)});
+ return d>=a && d<=b;
+}
+function renderSubjects(){
+ document.getElementById("subjects").innerHTML=subjects.map(s=>`<article class="subject">
+ <h3>${s.name}</h3><div class="meta">${s.schedule.map(x=>x[0]+" • "+x[1]).join("  |  ")}<br>60h • ${s.status}</div>
+ <div class="subject-actions contabilidade-social"><button class="secondary-btn" onclick="openSubject('${s.id}')">Abrir matéria</button>${s.id==="cont"?'<button class="primary-btn small" onclick="openPreview(0)">Prévia da semana</button>':""}</div>
+ </article>`).join("");
+}
+function openSubject(id){
+ const s=subjects.find(x=>x.id===id);
+ if(id==="cont"){document.getElementById("modalTitle").textContent="Contabilidade Social • Plano";document.getElementById("modalContent").innerHTML=`<p style="color:var(--muted)">16 semanas cadastradas.</p>${contWeeks.map((w,i)=>`<div class="preview-box"><strong>${w[0]}</strong><div style="font-size:12px;color:var(--muted);margin:4px 0 8px">${w[1]}</div><ul>${w[2].map(x=>`<li>${x}</li>`).join("")}</ul><button class="secondary-btn" onclick="openPreview(${i})">Ver prévia</button></div>`).join("")}`;openModal();return;}
+ document.getElementById("modalTitle").textContent=s.name;
+ document.getElementById("modalContent").innerHTML=`<div class="preview-box"><strong>Horários</strong><p>${s.schedule.map(x=>x[0]+" • "+x[1]).join("<br>")}</p></div><h4>Conteúdo</h4><p style="color:var(--muted)">${s.preview}</p><div class="preview-box">Assim que você receber o plano de ensino, mande o material e esta área poderá ser preenchida sem alterar o restante do app.</div>`;
+ openModal();
+}
+function openPreview(i){
+ const w=contWeeks[i];
+ document.getElementById("modalTitle").textContent=`Prévia • ${w[0]}`;
+ const concepts=w[2].map(x=>x.replace(/\.$/,"")).join(", ");
+ document.getElementById("modalContent").innerHTML=`<div class="preview-box"><strong>Período</strong><p>${w[1]}</p></div>
+ <h4>O que você vai estudar</h4><ul>${w[2].map(x=>`<li>${x}</li>`).join("")}</ul>
+ <h4>Antes de começar</h4><p style="color:var(--muted)">Leia os tópicos acima e tente explicar, com suas palavras, o que cada conceito significa. Depois avance para o material da aula.</p>
+ <h4>Conceitos-chave</h4><div class="tag blue" style="display:inline-block;white-space:normal">${concepts}</div>
+ <h4>Checklist pós-estudo</h4><div class="preview-box">☐ Consigo explicar os conceitos sem consultar o material<br>☐ Consigo diferenciar os conceitos principais<br>☐ Consigo resolver os exercícios propostos<br>☐ Consigo relacionar o conteúdo a um exemplo econômico</div>`;
+ openModal();
+}
+function openModal(){document.getElementById("modal").classList.remove("hidden")}
+function closeModal(){document.getElementById("modal").classList.add("hidden")}
+document.getElementById("closeModal").onclick=closeModal;
+document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="modal")closeModal()});
+
+function weekStart(){
+ const d=new Date(today); const day=d.getDay(); const diff=(day===0?-6:1)-day; d.setDate(d.getDate()+diff+currentWeekOffset*7); d.setHours(0,0,0,0); return d;
+}
+function renderCalendar(){
+ const start=weekStart(); const end=new Date(start); end.setDate(end.getDate()+6);
+ document.getElementById("weekLabel").textContent=`${br(start)} – ${br(end)}`;
+ let html="";
+ for(let i=0;i<7;i++){const d=new Date(start);d.setDate(d.getDate()+i);const dn=dayMap[d.getDay()];const cls=getDayClasses(dn);
+  const cont=contWeeks.find(w=>dateInRange(d,w[1]));
+  html+=`<div class="day ${iso(d)===iso(today)?"today":""}"><div class="day-name">${dn.slice(0,3)}</div><div class="day-num">${d.getDate()}</div>${cls.map(s=>`<div class="class-dot">${s.short}</div>`).join("")}${cont?`<div class="class-dot warn">Contab.: ${cont[0].replace("Semana ","S")}</div>`:""}</div>`;
+ }
+ document.getElementById("weekCalendar").innerHTML=html;
+}
+document.getElementById("prevWeek").onclick=()=>{currentWeekOffset--;renderCalendar()};
+document.getElementById("nextWeek").onclick=()=>{currentWeekOffset++;renderCalendar()};
+
+function taskHTML(t){
+ return `<div class="item"><div class="task"><button class="check ${t.done?"done":""}" onclick="toggleTask('${t.id}')">${t.done?"✓":""}</button><div class="task-main"><strong>${t.title}</strong><span>${t.subject||"Geral"} • ${t.date?new Date(t.date+"T12:00:00").toLocaleDateString("pt-BR"):"Sem data"}</span></div></div></div>`;
+}
+function renderTasks(){
+ let list=tasks.filter(t=>taskFilter==="all"?true:taskFilter==="done"?t.done:!t.done).sort((a,b)=>(a.date||"9999").localeCompare(b.date||"9999"));
+ document.getElementById("taskList").innerHTML=list.length?list.map(taskHTML).join(""):`<div class="empty">Nenhuma tarefa nesta categoria.</div>`;
+ document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b.dataset.filter===taskFilter));
+}
+function toggleTask(id){const t=tasks.find(x=>x.id===id);if(t)t.done=!t.done;save();renderTasks();renderHome();renderProgress();showToast(t.done?"Tarefa concluída.":"Tarefa reaberta.");}
+document.querySelectorAll(".filter").forEach(b=>b.onclick=()=>{taskFilter=b.dataset.filter;renderTasks()});
+document.getElementById("addTaskBtn").onclick=()=>{
+ const title=prompt("Nome da tarefa:");
+ if(!title)return;
+ const date=prompt("Data (AAAA-MM-DD), ou deixe em branco:");
+ const subject=prompt("Disciplina:");
+ tasks.push({id:Date.now().toString(),title,date,subject,done:false});save();renderTasks();renderHome();showToast("Tarefa adicionada.");
+};
+
+function renderProgress(){
+ const done=tasks.filter(t=>t.done).length,total=tasks.length, pct=total?Math.round(done/total*100):0;
+ document.getElementById("progressCards").innerHTML=`<div class="item"><div class="stat"><strong>Tarefas concluídas</strong><strong>${done}/${total}</strong></div><div class="progress"><i style="width:${pct}%"></i></div><p style="color:var(--muted);font-size:12px;margin-top:7px">${pct}% das tarefas cadastradas concluídas.</p></div>
+ ${subjects.map(s=>`<div class="item"><div class="stat"><strong>${s.name}</strong><span class="tag ${s.id==="cont"?"green":"yellow"}">${s.id==="cont"?"Plano cadastrado":"Aguardando conteúdo"}</span></div></div>`).join("")}`;
+}
+function showToast(msg){const el=document.getElementById("toast");el.textContent=msg;el.classList.remove("hidden");setTimeout(()=>el.classList.add("hidden"),2200)}
+document.getElementById("settingsBtn").onclick=()=>{alert("Primeira versão • Seus dados de tarefas ficam salvos neste dispositivo. Próximas versões podem receber notas, faltas, provas, materiais e sincronização.");};
+
+renderHome();renderSubjects();renderCalendar();renderTasks();renderProgress();
+
+
+// ===== VERSÃO 2: NOTAS E FALTAS =====
+const v2Key="fac_v2_data";
+let v2Data=JSON.parse(localStorage.getItem(v2Key)||"{}");
+
+function saveV2(){localStorage.setItem(v2Key,JSON.stringify(v2Data));}
+function v2Get(id){return v2Data[id]||{a1:"",a2:"",a3:"",missed:0,total:0};}
+function v2Avg(d){
+  const vals=[d.a1,d.a2,d.a3].map(Number).filter(x=>Number.isFinite(x)&&x>=0);
+  return vals.length ? vals.reduce((a,b)=>a+b,0)/vals.length : null;
+}
+function renderNotesV2(){
+  const el=document.getElementById("notesV2");
+  if(!el)return;
+  el.innerHTML=subjects.map(s=>{
+    const d=v2Get(s.id), avg=v2Avg(d);
+    const freq=d.total>0 ? Math.max(0,100-(Number(d.missed||0)/Number(d.total))*100) : null;
+    const status=avg===null?"Sem notas":avg>=7?"Atenção: ver regra oficial de aprovação":"Em andamento";
+    return `<div class="notes-v2-card">
+      <div class="item-row">
+        <div><h3>${s.name}</h3><div class="notes-v2-meta">${s.schedule.map(x=>x[0]+" • "+x[1]).join(" | ")}</div></div>
+        <div class="v2-score">${avg===null?"—":avg.toFixed(2)}</div>
+      </div>
+      <div class="notes-v2-grid">
+        <label>AV1<input type="number" min="0" max="10" step=".01" value="${d.a1}" data-v2="${s.id}:a1"></label>
+        <label>AV2<input type="number" min="0" max="10" step=".01" value="${d.a2}" data-v2="${s.id}:a2"></label>
+        <label>AV3<input type="number" min="0" max="10" step=".01" value="${d.a3}" data-v2="${s.id}:a3"></label>
+        <label>Faltas<input type="number" min="0" step="1" value="${d.missed}" data-v2="${s.id}:missed"></label>
+        <label>Total de aulas<input type="number" min="0" step="1" value="${d.total}" data-v2="${s.id}:total"></label>
+      </div>
+      <div class="notes-v2-meta" style="margin-top:9px">${freq===null?"Frequência: ainda não cadastrada":"Frequência registrada: "+freq.toFixed(1)+"%"} • ${status}</div>
+      <div class="notes-v2-actions">
+        <button class="primary-btn small" onclick="saveV2Subject('${s.id}')">Salvar</button>
+        ${s.id==="cont"?'<button class="secondary-btn small" onclick="showScreen("subjectsScreen");setTimeout(()=>openPreview(0),100)">Prévia da semana</button>':""}
+      </div>
+    </div>`;
+  }).join("");
+}
+function saveV2Subject(id){
+  const d=v2Get(id);
+  ["a1","a2","a3","missed","total"].forEach(k=>{
+    const el=document.querySelector(`[data-v2="${id}:${k}"]`);
+    if(el)d[k]=el.value;
+  });
+  v2Data[id]=d;saveV2();renderNotesV2();showToast("Notas e faltas salvas.");
+}
+
+renderNotesV2();
+</script>
+</body>
+</html>
