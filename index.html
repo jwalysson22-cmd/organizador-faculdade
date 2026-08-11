@@ -26,6 +26,12 @@ main{max-width:760px;margin:0 auto;padding:18px}.screen{display:none}.screen.act
 .modal{position:fixed;inset:0;background:rgba(10,18,30,.46);z-index:20;display:flex;align-items:flex-end}.modal.hidden{display:none}.modal-card{width:100%;max-width:760px;margin:auto 0 0;background:#fff;border-radius:24px 24px 0 0;max-height:88vh;overflow:auto;padding:20px}.modal-head{display:flex;justify-content:space-between;align-items:center}.modal-head h3{margin:0;font-size:20px}.modal .icon-btn{background:#EEF2F7;color:#25324A}.modal h4{margin:18px 0 7px}.modal ul{padding-left:20px;line-height:1.6;color:#445066}.modal li{margin:5px 0}.preview-box{background:#F5F8FC;border:1px solid #E1E8F2;border-radius:14px;padding:13px;margin-top:12px}.toast{position:fixed;z-index:30;left:18px;right:18px;bottom:100px;background:#182236;color:#fff;padding:12px 15px;border-radius:12px;text-align:center;font-size:13px}.toast.hidden{display:none}
 @media(max-width:430px){main{padding:15px}.week-grid{gap:3px}.day{min-height:112px;padding:5px}.day-num{font-size:16px}.class-dot{font-size:8px}.topbar{padding-left:16px;padding-right:16px}}
 
+
+.notes-v2-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px}
+.notes-v2-card h3{margin:0 0 6px;font-size:16px}.notes-v2-meta{font-size:12px;color:var(--muted);margin-bottom:10px}
+.notes-v2-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.notes-v2-grid label{font-size:11px;font-weight:800;color:#4A5568}.notes-v2-grid input{width:100%;margin-top:4px;padding:9px;border:1px solid #CBD3DF;border-radius:9px;font:inherit}
+.notes-v2-actions{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap}.v2-score{font-size:25px;font-weight:900}
+
 </style>
   <title>Faculdade • Walysson</title>
 </head>
@@ -100,7 +106,14 @@ main{max-width:760px;margin:0 auto;padding:18px}.screen{display:none}.screen.act
       <div class="screen-title"><div><span class="eyebrow">Acompanhamento</span><h2>Progresso</h2></div></div>
       <div id="progressCards" class="stack"></div>
     </section>
-  </main>
+  
+<section class="screen" id="notesScreen">
+  <div class="screen-title">
+    <div><span class="eyebrow">Versão 2</span><h2>Notas e faltas</h2></div>
+  </div>
+  <div id="notesV2" class="stack"></div>
+</section>
+</main>
 
   <nav class="bottom-nav">
     <button class="nav-item active" data-screen="homeScreen"><span>⌂</span><small>Início</small></button>
@@ -108,6 +121,7 @@ main{max-width:760px;margin:0 auto;padding:18px}.screen{display:none}.screen.act
     <button class="nav-item" data-screen="calendarScreen"><span>□</span><small>Calendário</small></button>
     <button class="nav-item" data-screen="tasksScreen"><span>✓</span><small>Tarefas</small></button>
     <button class="nav-item" data-screen="progressScreen"><span>◔</span><small>Progresso</small></button>
+<button class="nav-item" data-screen="notesScreen"><span>★</span><small>Notas</small></button>
   </nav>
 
   <div class="modal hidden" id="modal">
@@ -256,6 +270,54 @@ document.getElementById("settingsBtn").onclick=()=>{alert("Primeira versão • 
 
 renderHome();renderSubjects();renderCalendar();renderTasks();renderProgress();
 
+
+// ===== VERSÃO 2: NOTAS E FALTAS =====
+const v2Key="fac_v2_data";
+let v2Data=JSON.parse(localStorage.getItem(v2Key)||"{}");
+
+function saveV2(){localStorage.setItem(v2Key,JSON.stringify(v2Data));}
+function v2Get(id){return v2Data[id]||{a1:"",a2:"",a3:"",missed:0,total:0};}
+function v2Avg(d){
+  const vals=[d.a1,d.a2,d.a3].map(Number).filter(x=>Number.isFinite(x)&&x>=0);
+  return vals.length ? vals.reduce((a,b)=>a+b,0)/vals.length : null;
+}
+function renderNotesV2(){
+  const el=document.getElementById("notesV2");
+  if(!el)return;
+  el.innerHTML=subjects.map(s=>{
+    const d=v2Get(s.id), avg=v2Avg(d);
+    const freq=d.total>0 ? Math.max(0,100-(Number(d.missed||0)/Number(d.total))*100) : null;
+    const status=avg===null?"Sem notas":avg>=7?"Atenção: ver regra oficial de aprovação":"Em andamento";
+    return `<div class="notes-v2-card">
+      <div class="item-row">
+        <div><h3>${s.name}</h3><div class="notes-v2-meta">${s.schedule.map(x=>x[0]+" • "+x[1]).join(" | ")}</div></div>
+        <div class="v2-score">${avg===null?"—":avg.toFixed(2)}</div>
+      </div>
+      <div class="notes-v2-grid">
+        <label>AV1<input type="number" min="0" max="10" step=".01" value="${d.a1}" data-v2="${s.id}:a1"></label>
+        <label>AV2<input type="number" min="0" max="10" step=".01" value="${d.a2}" data-v2="${s.id}:a2"></label>
+        <label>AV3<input type="number" min="0" max="10" step=".01" value="${d.a3}" data-v2="${s.id}:a3"></label>
+        <label>Faltas<input type="number" min="0" step="1" value="${d.missed}" data-v2="${s.id}:missed"></label>
+        <label>Total de aulas<input type="number" min="0" step="1" value="${d.total}" data-v2="${s.id}:total"></label>
+      </div>
+      <div class="notes-v2-meta" style="margin-top:9px">${freq===null?"Frequência: ainda não cadastrada":"Frequência registrada: "+freq.toFixed(1)+"%"} • ${status}</div>
+      <div class="notes-v2-actions">
+        <button class="primary-btn small" onclick="saveV2Subject('${s.id}')">Salvar</button>
+        ${s.id==="cont"?'<button class="secondary-btn small" onclick="showScreen("subjectsScreen");setTimeout(()=>openPreview(0),100)">Prévia da semana</button>':""}
+      </div>
+    </div>`;
+  }).join("");
+}
+function saveV2Subject(id){
+  const d=v2Get(id);
+  ["a1","a2","a3","missed","total"].forEach(k=>{
+    const el=document.querySelector(`[data-v2="${id}:${k}"]`);
+    if(el)d[k]=el.value;
+  });
+  v2Data[id]=d;saveV2();renderNotesV2();showToast("Notas e faltas salvas.");
+}
+
+renderNotesV2();
 </script>
 </body>
 </html>
