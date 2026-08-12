@@ -10,21 +10,21 @@
   
   
   <style>
-*{box-sizing:border-box} :root{--blue:#173B73;--blue2:#24579B;--ink:#172033;--muted:#6D7685;--bg:#F4F6FA;--card:#fff;--line:#E4E8EF;--green:#217A55;--yellow:#A36A00;--red:#B43B3B}
+*{box-sizing:border-box} :root{--blue:#173B73;--blue2:#24579B;--ink:#172033;--muted:#6D7685;--bg:#F4F6FA;--card:#fff;--line:#E4E8EF;--green:#217A55;--yellow:#A36A00;--red:#B43B3B;--calc-primary:#D32F2F;--calc-light:#FFEBEE;--calc-dark:#B71C1C;--conta-primary:#2E7D32;--conta-light:#E8F5E9;--conta-dark:#1B5E20;--method-primary:#1976D2;--method-light:#E3F2FD;--method-dark:#0D47A1;--micro-primary:#F57C00;--micro-light:#FFF3E0;--micro-dark:#E65100;--econ-primary:#F9A825;--econ-light:#FFFACD;--econ-dark:#E8B01A}
 html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif}
 body{padding-bottom:92px}.topbar{background:linear-gradient(135deg,#173B73,#24579B);color:#fff;padding:calc(18px + env(safe-area-inset-top)) 20px 22px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:5}.topbar h1{margin:3px 0 0;font-size:22px}.eyebrow{font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.78;font-weight:700}.icon-btn{border:0;background:rgba(255,255,255,.14);color:inherit;width:38px;height:38px;border-radius:12px;font-size:16px}
 main{max-width:760px;margin:0 auto;padding:18px}.screen{display:none}.screen.active{display:block}.card,.stack>*{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 5px 20px rgba(23,32,51,.04)}
 .hero{padding:20px;background:linear-gradient(135deg,#fff,#edf3fb)}.hero h2{font-size:25px;margin:12px 0 5px}.hero p{margin:0;color:var(--muted)}.pill{display:inline-flex;background:#E4ECF8;color:var(--blue);padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700}
 .section-head{display:flex;align-items:center;justify-content:space-between;margin:25px 2px 10px}.section-head h3{margin:0;font-size:17px}.text-btn{border:0;background:none;color:var(--blue2);font-weight:700}
-.stack{display:grid;gap:10px}.item{padding:15px}.item-row{display:flex;justify-content:space-between;gap:12px}.item h4{margin:0 0 5px;font-size:15px}.item p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}.tag{font-size:11px;padding:5px 8px;border-radius:8px;background:#EEF2F7;color:#475569;font-weight:700;white-space:nowrap}.tag.blue{background:#E7EFFB;color:var(--blue)}.tag.green{background:#E6F4ED;color:var(--green)}.tag.yellow{background:#FFF3DB;color:var(--yellow)}
+.stack{display:grid;gap:10px}.item{padding:15px}.item-row{display:flex;justify-content:space-between;gap:12px}.item h4{margin:0 0 5px;font-size:15px}.item p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}.tag{font-size:11px;padding:5px 8px;border-radius:8px;background:#EEF2F7;color:#475569;font-weight:700;white-space:nowrap}.tag.blue{background:#E7EFFB;color:var(--blue)}.tag.green{background:#E6F4ED;color:var(--green)}.tag.yellow{background:#FFF3DB;color:var(--yellow)}.tag.calc{background:var(--calc-light);color:var(--calc-primary);font-weight:800}.tag.conta{background:var(--conta-light);color:var(--conta-primary);font-weight:800}.tag.method{background:var(--method-light);color:var(--method-primary);font-weight:800}.tag.micro{background:var(--micro-light);color:var(--micro-primary);font-weight:800}.tag.econ{background:var(--econ-light);color:var(--econ-primary);font-weight:800}
 .screen-title{display:flex;justify-content:space-between;align-items:center;margin:4px 0 18px}.screen-title h2{margin:4px 0 0;font-size:26px}
-.subject-grid{display:grid;gap:12px}.subject{padding:17px;background:var(--card);border:1px solid var(--line);border-radius:18px}.subject h3{margin:0 0 6px;font-size:17px}.subject .meta{color:var(--muted);font-size:12px;margin-bottom:13px}.subject-actions{display:flex;gap:8px;flex-wrap:wrap}.secondary-btn,.primary-btn,.filter{border:1px solid var(--line);border-radius:11px;padding:9px 12px;background:#fff;color:var(--ink);font-weight:700}.primary-btn{background:var(--blue);color:#fff;border-color:var(--blue)}.primary-btn.small{padding:8px 11px}.secondary-btn{min-width:42px}
-.calendar-controls{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.week-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}.day{min-height:125px;background:#fff;border:1px solid var(--line);border-radius:13px;padding:7px}.day.today{border:2px solid var(--blue)}.day-name{font-size:10px;text-transform:uppercase;color:var(--muted);font-weight:800}.day-num{font-size:18px;font-weight:800;margin:2px 0 8px}.class-dot{font-size:9px;line-height:1.25;padding:4px 4px;background:#EAF0F9;color:var(--blue);border-radius:6px;margin-bottom:4px}.class-dot.warn{background:#FFF3DB;color:var(--yellow)}
+.subject-grid{display:grid;gap:12px}.subject{padding:17px;background:var(--card);border:1px solid var(--line);border-radius:18px;border-left:5px solid}.subject.calc{border-left-color:var(--calc-primary)}.subject.conta{border-left-color:var(--conta-primary)}.subject.method{border-left-color:var(--method-primary)}.subject.micro{border-left-color:var(--micro-primary)}.subject.econ{border-left-color:var(--econ-primary)}.subject h3{margin:0 0 6px;font-size:17px}.subject .meta{color:var(--muted);font-size:12px;margin-bottom:13px}.subject-actions{display:flex;gap:8px;flex-wrap:wrap}.secondary-btn,.primary-btn,.filter{border:1px solid var(--line);border-radius:11px;padding:9px 12px;background:#fff;color:var(--ink);font-weight:700}.primary-btn{background:var(--blue);color:#fff;border-color:var(--blue)}.primary-btn.small{padding:8px 11px}.secondary-btn{min-width:42px}
+.calendar-controls{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.week-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px}.day{min-height:140px;background:#fff;border:1px solid var(--line);border-radius:13px;padding:7px;display:flex;flex-direction:column}.day.today{border:2px solid var(--blue)}.day-name{font-size:11px;text-transform:uppercase;color:var(--muted);font-weight:800;margin-bottom:5px}.day-num{font-size:16px;font-weight:800;margin-bottom:8px}.day-classes{flex:1;display:flex;flex-direction:column;gap:5px;overflow-y:auto}.class-block{font-size:10px;line-height:1.3;padding:6px;border-radius:8px;font-weight:700;color:#fff;text-align:center;border-left:3px solid}.class-block.calc{background:var(--calc-light);color:var(--calc-primary);border-left-color:var(--calc-primary)}.class-block.conta{background:var(--conta-light);color:var(--conta-primary);border-left-color:var(--conta-primary)}.class-block.method{background:var(--method-light);color:var(--method-primary);border-left-color:var(--method-primary)}.class-block.micro{background:var(--micro-light);color:var(--micro-primary);border-left-color:var(--micro-primary)}.class-block.econ{background:var(--econ-light);color:var(--econ-primary);border-left-color:var(--econ-primary)}.day-indicator{font-size:8px;line-height:1.2;padding:3px 4px;background:#FFF3DB;color:#A36A00;border-radius:4px;margin-top:auto}
 .filters{display:flex;gap:7px;margin-bottom:14px}.filter.active{background:var(--blue);border-color:var(--blue);color:#fff}.check{width:22px;height:22px;border-radius:7px;border:2px solid #C8CFDA;background:#fff;flex:none}.check.done{background:var(--green);border-color:var(--green);color:#fff}.task{display:flex;gap:11px;align-items:flex-start}.task-main{flex:1}.task-main strong{display:block;font-size:14px}.task-main span{display:block;color:var(--muted);font-size:12px;margin-top:3px}
 .progress{height:9px;background:#E9EDF3;border-radius:99px;overflow:hidden;margin-top:9px}.progress>i{display:block;height:100%;background:var(--blue);border-radius:99px}.stat{display:flex;justify-content:space-between;font-size:13px}.empty{padding:20px;text-align:center;color:var(--muted);background:#fff;border:1px dashed #CBD3DF;border-radius:16px;font-size:13px}
 .bottom-nav{position:fixed;z-index:10;left:0;right:0;bottom:0;background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);padding:7px 7px calc(7px + env(safe-area-inset-bottom));box-shadow:0 -5px 20px rgba(0,0,0,.05)}.nav-item{border:0;background:none;color:#7B8492;padding:5px 2px;border-radius:12px}.nav-item span{display:block;font-size:20px;line-height:20px}.nav-item small{font-size:10px;font-weight:700}.nav-item.active{color:var(--blue);background:#EEF3FA}
 .modal{position:fixed;inset:0;background:rgba(10,18,30,.46);z-index:20;display:flex;align-items:flex-end}.modal.hidden{display:none}.modal-card{width:100%;max-width:760px;margin:auto 0 0;background:#fff;border-radius:24px 24px 0 0;max-height:88vh;overflow:auto;padding:20px}.modal-head{display:flex;justify-content:space-between;align-items:center}.modal-head h3{margin:0;font-size:20px}.modal .icon-btn{background:#EEF2F7;color:#25324A}.modal h4{margin:18px 0 7px}.modal ul{padding-left:20px;line-height:1.6;color:#445066}.modal li{margin:5px 0}.preview-box{background:#F5F8FC;border:1px solid #E1E8F2;border-radius:14px;padding:13px;margin-top:12px}.toast{position:fixed;z-index:30;left:18px;right:18px;bottom:100px;background:#182236;color:#fff;padding:12px 15px;border-radius:12px;text-align:center;font-size:13px}.toast.hidden{display:none}
-@media(max-width:430px){main{padding:15px}.week-grid{gap:3px}.day{min-height:112px;padding:5px}.day-num{font-size:16px}.class-dot{font-size:8px}.topbar{padding-left:16px;padding-right:16px}}
+@media(max-width:430px){main{padding:15px}.week-grid{gap:3px}.day{min-height:130px;padding:5px}.day-num{font-size:14px}.class-block{font-size:9px;padding:4px}.topbar{padding-left:16px;padding-right:16px}}
 
 
 .notes-v2-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px}
@@ -32,7 +32,7 @@ main{max-width:760px;margin:0 auto;padding:18px}.screen{display:none}.screen.act
 .notes-v2-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.notes-v2-grid label{font-size:11px;font-weight:800;color:#4A5568}.notes-v2-grid input{width:100%;margin-top:4px;padding:9px;border:1px solid #CBD3DF;border-radius:9px;font:inherit}
 .notes-v2-actions{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap}.v2-score{font-size:25px;font-weight:900}
 
-</style>
+  </style>
   <title>Faculdade • Walysson</title>
 </head>
 <body>
@@ -103,123 +103,93 @@ main{max-width:760px;margin:0 auto;padding:18px}.screen{display:none}.screen.act
     </section>
 
     <section class="screen" id="progressScreen">
-      <div class="screen-title"><div><span class="eyebrow">Acompanhamento</span><h2>Progresso</h2></div></div>
+      <div class="screen-title">
+        <div><span class="eyebrow">Desempenho</span><h2>Progresso</h2></div>
+      </div>
       <div id="progressCards" class="stack"></div>
     </section>
-  
-<section class="screen" id="notesScreen">
-  <div class="screen-title">
-    <div><span class="eyebrow">Versão 2</span><h2>Notas e faltas</h2></div>
-  </div>
-  <div id="notesV2" class="stack"></div>
-</section>
-</main>
+
+    <section class="screen" id="notesScreen">
+      <div class="screen-title">
+        <div><span class="eyebrow">Avaliações</span><h2>Notas</h2></div>
+      </div>
+      <div id="notesV2"></div>
+    </section>
+  </main>
 
   <nav class="bottom-nav">
-    <button class="nav-item active" data-screen="homeScreen"><span>⌂</span><small>Início</small></button>
-    <button class="nav-item" data-screen="subjectsScreen"><span>▦</span><small>Matérias</small></button>
-    <button class="nav-item" data-screen="calendarScreen"><span>□</span><small>Calendário</small></button>
+    <button class="nav-item active" data-screen="homeScreen"><span>🏠</span><small>Início</small></button>
+    <button class="nav-item" data-screen="subjectsScreen"><span>📚</span><small>Matérias</small></button>
+    <button class="nav-item" data-screen="calendarScreen"><span>📅</span><small>Calendário</small></button>
     <button class="nav-item" data-screen="tasksScreen"><span>✓</span><small>Tarefas</small></button>
-    <button class="nav-item" data-screen="progressScreen"><span>◔</span><small>Progresso</small></button>
-<button class="nav-item" data-screen="notesScreen"><span>★</span><small>Notas</small></button>
+    <button class="nav-item" data-screen="progressScreen"><span>📊</span><small>Progresso</small></button>
   </nav>
 
-  <div class="modal hidden" id="modal">
+  <div id="modal" class="modal hidden">
     <div class="modal-card">
-      <div class="modal-head"><h3 id="modalTitle">Prévia de estudo</h3><button class="icon-btn" id="closeModal">✕</button></div>
+      <div class="modal-head">
+        <h3 id="modalTitle">Semana de Contabilidade</h3>
+        <button class="icon-btn" id="closeModal">✕</button>
+      </div>
       <div id="modalContent"></div>
     </div>
   </div>
 
-  <div class="toast hidden" id="toast"></div>
-  <script>
-const subjects = [
- {id:"micro",name:"Microeconomia I",short:"Micro I",schedule:[["Terça","3N34"],["Quinta","5N12"]],status:"Conteúdo ainda não disponibilizado",preview:"Quando o professor liberar o plano de ensino, esta área receberá a prévia de cada conteúdo antes do estudo."},
- {id:"cont",name:"Contabilidade Social",short:"Contab. Social",schedule:[["Segunda","2N12"],["Quinta","5N34"]],status:"16 semanas cadastradas"},
- {id:"emp",name:"Economia de Empresas",short:"Econ. Empresas",schedule:[["Quarta","4N34"],["Sexta","6N12"]],status:"Conteúdo ainda não disponibilizado",preview:"Quando o professor liberar o plano de ensino, esta área receberá a prévia de cada conteúdo antes do estudo."},
- {id:"calc",name:"Cálculo NII",short:"Cálculo NII",schedule:[["Segunda","2N34"],["Quarta","4N12"]],status:"Conteúdo ainda não disponibilizado",preview:"Quando o professor liberar o plano de ensino, esta área receberá a prévia de cada conteúdo antes do estudo."},
- {id:"met",name:"Metodologia Científica em Economia",short:"Metodologia",schedule:[["Terça","3N12"],["Sexta","6N34"]],status:"Conteúdo ainda não disponibilizado",preview:"Quando o professor liberar o plano de ensino, esta área receberá a prévia de cada conteúdo antes do estudo."}
+  <div id="toast" class="toast hidden"></div>
+
+<script>
+const today=new Date(),dayMap=["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"];
+let currentWeekOffset=0,taskFilter="all";
+
+// ===== SISTEMA DE CORES DAS DISCIPLINAS =====
+const subjectColors={
+ calc:{id:"calc",name:"Cálculo NII",color:"var(--calc-primary)",lightBg:"var(--calc-light)",shortColor:"var(--calc-dark)"},
+ conta:{id:"conta",name:"Contabilidade Social",color:"var(--conta-primary)",lightBg:"var(--conta-light)",shortColor:"var(--conta-dark)"},
+ method:{id:"method",name:"Metodologia Científica em Economia",color:"var(--method-primary)",lightBg:"var(--method-light)",shortColor:"var(--method-dark)"},
+ micro:{id:"micro",name:"Microeconomia I",color:"var(--micro-primary)",lightBg:"var(--micro-light)",shortColor:"var(--micro-dark)"},
+ econ:{id:"econ",name:"Economia de Empresas",color:"var(--econ-primary)",lightBg:"var(--econ-light)",shortColor:"var(--econ-dark)"}
+};
+
+const subjects=[
+ {id:"calc",name:"Cálculo NII",short:"Cálc",color:"calc",schedule:[["Segunda",1],["Quarta",1]]},
+ {id:"conta",name:"Contabilidade Social",short:"Conta",color:"conta",schedule:[["Segunda",2],["Quinta",2]]},
+ {id:"method",name:"Metodologia Científica em Economia",short:"Metod",color:"method",schedule:[["Terça",1],["Sexta",2]]},
+ {id:"micro",name:"Microeconomia I",short:"Micro",color:"micro",schedule:[["Terça",2],["Quinta",1]]},
+ {id:"econ",name:"Economia de Empresas",short:"Econ",color:"econ",schedule:[["Quarta",2],["Sexta",1]]}
 ];
-
-const contWeeks = [
- ["Semana 1","10/08/2026 - 13/08/2026",["Conceitos vinculados à Contabilidade Social.","Introdução ao conceito de PIB (Produto Interno Bruto)"]],
- ["Semana 2","17/08/2026 - 20/08/2026",["Produto Nacional Bruto (PNB).","PIB a preços de mercado e custo de fatores.","Produto Interno Líquido (PIL).","Renda Nacional Disponível.","Renda Líquida do Governo.","Exercícios."]],
- ["Semana 3","24/08/2026 - 27/08/2026",["Contas Econômicas Ambientais.","Comparações internacionais do PIB (PPP).","Análise de dados nacionais e internacionais.","Consulta a bases de dados internacionais e variáveis macroeconômicas."]],
- ["Semana 4","31/08/2026 - 03/09/2026",["Índice Big Mac.","Exercícios."]],
- ["Semana 5","10/09/2026 - 14/09/2026",["Sistema de Contas Nacionais / IBGE.","Contas Econômicas Integradas (CEIs) e Tabelas de Recursos e Usos (TRUs)."]],
- ["Semana 6","14/09/2026 - 17/09/2026",["Informações das CEIs e TRUs do Brasil."]],
- ["Semana 7","21/09/2026 - 24/09/2026",["Continuação CEIs e TRUs."]],
- ["Semana 8","28/09/2026 - 01/10/2026",["Revisão para a 1ª VA e avaliação."]],
- ["Semana 9","05/10/2026 - 08/10/2026",["Correção da 1ª VA em sala de aula.","Revisão de álgebra linear."]],
- ["Semana 10","15/10/2026 - 19/10/2026",["Modelo Insumo-Produto (MIP).","Análise de impactos."]],
- ["Semana 11","22/10/2026 - 26/10/2026",["Números-índice.","Índices de inflação no Brasil.","Correção monetária."]],
- ["Semana 12","29/10/2026 - 05/11/2026",["Introdução ao Balanço de Pagamentos do Brasil."]],
- ["Semana 13","09/11/2026 - 12/11/2026",["Análise do orçamento público.","Indicadores da dívida pública."]],
- ["Semana 14","16/11/2026 - 23/11/2026",["Análise do mercado de trabalho brasileiro.","Contabilidade do emprego e desemprego."]],
- ["Semana 15","26/11/2026 - 30/11/2026",["Revisão geral / exercícios."]],
- ["Semana 16","30/11/2026",["Revisão para 2ª VA e avaliação.","Resolução da VA em sala."]]
-];
-
-let tasks = JSON.parse(localStorage.getItem("fac_tasks")||"[]");
-let currentWeekOffset = 0, taskFilter = "all";
-
-const dayMap = {0:"Domingo",1:"Segunda",2:"Terça",3:"Quarta",4:"Quinta",5:"Sexta",6:"Sábado"};
-const iso = d => d.toISOString().slice(0,10);
-const br = d => d.toLocaleDateString("pt-BR",{day:"2-digit",month:"2-digit"});
-const today = new Date();
-
+const contWeeks=[];
+let tasks=JSON.parse(localStorage.getItem("fac_tasks")||"[]");
 function save(){localStorage.setItem("fac_tasks",JSON.stringify(tasks));}
-function showScreen(id){
- document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("active",s.id===id));
- document.querySelectorAll(".nav-item").forEach(b=>b.classList.toggle("active",b.dataset.screen===id));
- window.scrollTo({top:0,behavior:"smooth"});
- if(id==="homeScreen") renderHome(); if(id==="subjectsScreen") renderSubjects(); if(id==="calendarScreen") renderCalendar(); if(id==="tasksScreen") renderTasks(); if(id==="progressScreen") renderProgress();
-}
-document.querySelectorAll("[data-screen]").forEach(b=>b.addEventListener("click",()=>showScreen(b.dataset.screen)));
-
-function getDayClasses(dayName){
- return subjects.filter(s=>s.schedule.some(x=>x[0]===dayName));
-}
+function iso(d){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`}
+function br(d){return `${String(d.getDate()).padStart(2,"0")}/${String(d.getMonth()+1).padStart(2,"0")}`}
+function dateInRange(d,range){const r0=new Date(range[0]),r1=new Date(range[1]);return d>=r0&&d<=r1}
+function getDayClasses(dayName){return subjects.filter(s=>s.schedule.some(x=>x[0]===dayName)).map(s=>({...s,order:s.schedule.find(x=>x[0]===dayName)[1]})).sort((a,b)=>a.order-b.order)}
 function renderHome(){
- document.getElementById("todayText").textContent=today.toLocaleDateString("pt-BR",{weekday:"long",day:"numeric",month:"long"});
- const name=dayMap[today.getDay()];
- const classes=getDayClasses(name);
- document.getElementById("todayClasses").innerHTML=classes.length?classes.map(s=>`<div class="item"><div class="item-row"><div><h4>${s.name}</h4><p>${s.schedule.filter(x=>x[0]===name).map(x=>x[1]).join(" • ")} • CEGOE</p></div><span class="tag blue">Aula</span></div></div>`).join(""):`<div class="empty">Sem aulas cadastradas para hoje.</div>`;
- const week=contWeeks.find(w=>dateInRange(today,w[1]));
- const study=document.getElementById("studyToday");
- if(week){
-   study.innerHTML=`<div class="item"><div class="item-row"><div><h4>${week[0]} • Contabilidade Social</h4><p>${week[2].slice(0,2).join(" ")}</p></div><span class="tag green">Prévia</span></div><button class="primary-btn small" style="margin-top:11px" onclick="openPreview(${contWeeks.indexOf(week)})">Ver prévia antes de estudar</button></div>`;
- } else study.innerHTML=`<div class="empty">Nenhum conteúdo de Contabilidade Social associado à data de hoje.</div>`;
- const upcoming=tasks.filter(t=>!t.done).sort((a,b)=>a.date.localeCompare(b.date)).slice(0,3);
- document.getElementById("deadlines").innerHTML=upcoming.length?upcoming.map(taskHTML).join(""):`<div class="empty">Nenhuma tarefa cadastrada. Você pode adicionar trabalhos e provas na aba Tarefas.</div>`;
-}
-function dateInRange(d,range){
- const [a,b]=range.split(" - ").map(x=>{const [dd,mm,yy]=x.split("/").map(Number);return new Date(yy,mm-1,dd)});
- return d>=a && d<=b;
+ const dn=dayMap[today.getDay()];
+ document.getElementById("todayText").textContent=new Date().toLocaleDateString("pt-BR",{weekday:"long",day:"numeric",month:"long"});
+ const cls=getDayClasses(dn).map(s=>`<div class="item"><div class="item-row"><strong>${s.name}</strong><span class="tag ${s.color}">${s.short}</span></div><p>${s.schedule.find(x=>x[0]===dn)[1]}ª aula do dia</p></div>`).join("");
+ document.getElementById("todayClasses").innerHTML=cls||"<div class='empty'>Nenhuma aula hoje.</div>";
+ const dueBefore=[],study=[];
+ tasks.forEach(t=>{if(!t.done&&t.date){const d=new Date(t.date+"T12:00:00");if(d<new Date())dueBefore.push(t);else if(d-today<7*24*60*60*1000)study.push(t)}});
+ study.sort((a,b)=>(a.date||"9999").localeCompare(b.date||"9999"));
+ document.getElementById("studyToday").innerHTML=dueBefore.length||study.length?[...dueBefore,...study].slice(0,3).map(t=>`<div class="item"><div class="task"><button class="check ${t.done?"done":""}" onclick="toggleTask('${t.id}')">${t.done?"✓":""}</button><div class="task-main"><strong>${t.title}</strong><span>${t.subject||"Geral"} • ${new Date(t.date+"T12:00:00").toLocaleDateString("pt-BR")}</span></div></div></div>`).join(""):"<div class='empty'>Nenhum estudo próximo.</div>";
+ const deadlines=[];
+ tasks.forEach(t=>{if(!t.done&&t.date){const d=new Date(t.date+"T12:00:00");deadlines.push({...t,_d:d})}});
+ deadlines.sort((a,b)=>a._d-b._d);
+ document.getElementById("deadlines").innerHTML=deadlines.slice(0,4).length?deadlines.slice(0,4).map(t=>`<div class="item"><div class="item-row"><strong>${t.title}</strong><span class="tag">${t._d.toLocaleDateString("pt-BR",{day:"2-digit",month:"2-digit"})}</span></div><p>${t.subject||"Geral"}</p></div>`).join(""):"<div class='empty'>Nenhum prazo próximo.</div>";
 }
 function renderSubjects(){
- document.getElementById("subjects").innerHTML=subjects.map(s=>`<article class="subject">
- <h3>${s.name}</h3><div class="meta">${s.schedule.map(x=>x[0]+" • "+x[1]).join("  |  ")}<br>60h • ${s.status}</div>
- <div class="subject-actions"><button class="secondary-btn" onclick="openSubject('${s.id}')">Abrir matéria</button>${s.id==="cont"?'<button class="primary-btn small" onclick="openPreview(0)">Prévia da semana</button>':""}</div>
- </article>`).join("");
+ document.getElementById("subjects").innerHTML=subjects.map(s=>{const color=subjectColors[s.color];return `<div class="subject ${s.color}"><h3>${s.name}</h3><p class="meta">${s.schedule.map(x=>`${x[0]} • ${x[1]}ª aula`).join(" | ")}</p></div>`}).join("");
 }
-function openSubject(id){
- const s=subjects.find(x=>x.id===id);
- if(id==="cont"){document.getElementById("modalTitle").textContent="Contabilidade Social • Plano";document.getElementById("modalContent").innerHTML=`<p style="color:var(--muted)">16 semanas cadastradas.</p>${contWeeks.map((w,i)=>`<div class="preview-box"><strong>${w[0]}</strong><div style="font-size:12px;color:var(--muted);margin:4px 0 8px">${w[1]}</div><ul>${w[2].map(x=>`<li>${x}</li>`).join("")}</ul><button class="secondary-btn" onclick="openPreview(${i})">Ver prévia</button></div>`).join("")}`;openModal();return;}
- document.getElementById("modalTitle").textContent=s.name;
- document.getElementById("modalContent").innerHTML=`<div class="preview-box"><strong>Horários</strong><p>${s.schedule.map(x=>x[0]+" • "+x[1]).join("<br>")}</p></div><h4>Conteúdo</h4><p style="color:var(--muted)">${s.preview}</p><div class="preview-box">Assim que você receber o plano de ensino, mande o material e esta área poderá ser preenchida sem alterar o restante do app.</div>`;
- openModal();
-}
-function openPreview(i){
- const w=contWeeks[i];
- document.getElementById("modalTitle").textContent=`Prévia • ${w[0]}`;
- const concepts=w[2].map(x=>x.replace(/\.$/,"")).join(", ");
- document.getElementById("modalContent").innerHTML=`<div class="preview-box"><strong>Período</strong><p>${w[1]}</p></div>
- <h4>O que você vai estudar</h4><ul>${w[2].map(x=>`<li>${x}</li>`).join("")}</ul>
- <h4>Antes de começar</h4><p style="color:var(--muted)">Leia os tópicos acima e tente explicar, com suas palavras, o que cada conceito significa. Depois avance para o material da aula.</p>
- <h4>Conceitos-chave</h4><div class="tag blue" style="display:inline-block;white-space:normal">${concepts}</div>
- <h4>Checklist pós-estudo</h4><div class="preview-box">☐ Consigo explicar os conceitos sem consultar o material<br>☐ Consigo diferenciar os conceitos principais<br>☐ Consigo resolver os exercícios propostos<br>☐ Consigo relacionar o conteúdo a um exemplo econômico</div>`;
- openModal();
+document.querySelectorAll(".nav-item").forEach(btn=>btn.onclick=()=>{
+ showScreen(btn.dataset.screen);
+ document.querySelectorAll(".nav-item").forEach(b=>b.classList.remove("active"));
+ btn.classList.add("active");
+});
+function showScreen(name){
+ document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+ document.getElementById(name).classList.add("active");
+ renderHome();renderSubjects();renderCalendar();
 }
 function openModal(){document.getElementById("modal").classList.remove("hidden")}
 function closeModal(){document.getElementById("modal").classList.add("hidden")}
@@ -230,12 +200,36 @@ function weekStart(){
  const d=new Date(today); const day=d.getDay(); const diff=(day===0?-6:1)-day; d.setDate(d.getDate()+diff+currentWeekOffset*7); d.setHours(0,0,0,0); return d;
 }
 function renderCalendar(){
- const start=weekStart(); const end=new Date(start); end.setDate(end.getDate()+6);
+ const start=weekStart();
+ const end=new Date(start); 
+ end.setDate(end.getDate()+4); // Segunda a Sexta (5 dias)
  document.getElementById("weekLabel").textContent=`${br(start)} – ${br(end)}`;
+ 
+ // NOVA GRADE SEMANAL CONFORME SOLICITADO
+ const weekSchedule={
+  "Segunda":[{id:"conta",name:"Contabilidade Social",short:"Conta"},{id:"calc",name:"Cálculo NII",short:"Cálc"}],
+  "Terça":[{id:"method",name:"Metodologia Científica em Economia",short:"Metod"},{id:"micro",name:"Microeconomia I",short:"Micro"}],
+  "Quarta":[{id:"calc",name:"Cálculo NII",short:"Cálc"},{id:"econ",name:"Economia de Empresas",short:"Econ"}],
+  "Quinta":[{id:"micro",name:"Microeconomia I",short:"Micro"},{id:"conta",name:"Contabilidade Social",short:"Conta"}],
+  "Sexta":[{id:"econ",name:"Economia de Empresas",short:"Econ"},{id:"method",name:"Metodologia Científica em Economia",short:"Metod"}]
+ };
+ 
  let html="";
- for(let i=0;i<7;i++){const d=new Date(start);d.setDate(d.getDate()+i);const dn=dayMap[d.getDay()];const cls=getDayClasses(dn);
+ for(let i=0;i<5;i++){
+  const d=new Date(start);
+  d.setDate(d.getDate()+i);
+  const dn=dayMap[d.getDay()];
+  const classes=weekSchedule[dn]||[];
   const cont=contWeeks.find(w=>dateInRange(d,w[1]));
-  html+=`<div class="day ${iso(d)===iso(today)?"today":""}"><div class="day-name">${dn.slice(0,3)}</div><div class="day-num">${d.getDate()}</div>${cls.map(s=>`<div class="class-dot">${s.short}</div>`).join("")}${cont?`<div class="class-dot warn">Contab.: ${cont[0].replace("Semana ","S")}</div>`:""}</div>`;
+  
+  html+=`<div class="day ${iso(d)===iso(today)?"today":""}">
+   <div class="day-name">${dn.slice(0,3)}</div>
+   <div class="day-num">${d.getDate()}</div>
+   <div class="day-classes">
+    ${classes.map(cls=>`<div class="class-block ${cls.id}">${cls.name}</div>`).join("")}
+   </div>
+   ${cont?`<div class="day-indicator">Contab.: ${cont[0].replace("Semana ","S")}</div>`:""}
+  </div>`;
  }
  document.getElementById("weekCalendar").innerHTML=html;
 }
@@ -263,7 +257,7 @@ document.getElementById("addTaskBtn").onclick=()=>{
 function renderProgress(){
  const done=tasks.filter(t=>t.done).length,total=tasks.length, pct=total?Math.round(done/total*100):0;
  document.getElementById("progressCards").innerHTML=`<div class="item"><div class="stat"><strong>Tarefas concluídas</strong><strong>${done}/${total}</strong></div><div class="progress"><i style="width:${pct}%"></i></div><p style="color:var(--muted);font-size:12px;margin-top:7px">${pct}% das tarefas cadastradas concluídas.</p></div>
- ${subjects.map(s=>`<div class="item"><div class="stat"><strong>${s.name}</strong><span class="tag ${s.id==="cont"?"green":"yellow"}">${s.id==="cont"?"Plano cadastrado":"Aguardando conteúdo"}</span></div></div>`).join("")}`;
+ ${subjects.map(s=>`<div class="item"><div class="stat"><strong>${s.name}</strong><span class="tag ${s.color}">${s.id==="conta"?"Plano cadastrado":"Aguardando conteúdo"}</span></div></div>`).join("")}`;
 }
 function showToast(msg){const el=document.getElementById("toast");el.textContent=msg;el.classList.remove("hidden");setTimeout(()=>el.classList.add("hidden"),2200)}
 document.getElementById("settingsBtn").onclick=()=>{alert("Primeira versão • Seus dados de tarefas ficam salvos neste dispositivo. Próximas versões podem receber notas, faltas, provas, materiais e sincronização.");};
@@ -290,7 +284,7 @@ function renderNotesV2(){
     const status=avg===null?"Sem notas":avg>=7?"Atenção: ver regra oficial de aprovação":"Em andamento";
     return `<div class="notes-v2-card">
       <div class="item-row">
-        <div><h3>${s.name}</h3><div class="notes-v2-meta">${s.schedule.map(x=>x[0]+" • "+x[1]).join(" | ")}</div></div>
+        <div><h3>${s.name}</h3><div class="notes-v2-meta">${s.schedule.map(x=>x[0]+" • "+x[1]+"ª aula").join(" | ")}</div></div>
         <div class="v2-score">${avg===null?"—":avg.toFixed(2)}</div>
       </div>
       <div class="notes-v2-grid">
@@ -303,7 +297,7 @@ function renderNotesV2(){
       <div class="notes-v2-meta" style="margin-top:9px">${freq===null?"Frequência: ainda não cadastrada":"Frequência registrada: "+freq.toFixed(1)+"%"} • ${status}</div>
       <div class="notes-v2-actions">
         <button class="primary-btn small" onclick="saveV2Subject('${s.id}')">Salvar</button>
-        ${s.id==="cont"?'<button class="secondary-btn small" onclick="showScreen("subjectsScreen");setTimeout(()=>openPreview(0),100)">Prévia da semana</button>':""}
+        ${s.id==="conta"?'<button class="secondary-btn small" onclick="showScreen("subjectsScreen");setTimeout(()=>openPreview(0),100)">Prévia da semana</button>':""}
       </div>
     </div>`;
   }).join("");
